@@ -14,6 +14,8 @@ openssl genrsa -out device.key 2048
 openssl req -new -key device.key -subj "/CN=${DOMAIN}" -out device.csr
 openssl x509 -req -in device.csr -CA base.pem -CAkey base.key -CAcreateserial -days 10000 -out device.crt
 
+cp -r base.pem /ngrok/assets/client/tls/ngrokroot.crt
+
 cd /ngrok
 make release-server
 make release-client
