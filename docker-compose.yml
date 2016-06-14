@@ -1,0 +1,11 @@
+server:
+  image: hteen/ngrok
+  ports:
+    - "8082:80"
+    - "4432:443"
+    - "4443:4443"
+  volumes:
+    - /data/ngrok:/myfiles
+  environment:
+    - DOMAIN="tunnel.hteen.cn"
+  command: /bin/bash /server.sh
