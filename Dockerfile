@@ -1,9 +1,7 @@
-FROM ubuntu:16.04
+FROM golang:1.7.1-alpine
 MAINTAINER hteen <i@hteen.cn>
 
-RUN apt-get update && \
-    apt-get install -y build-essential golang git mercurial && \
-    mkdir -p /release
+RUN apk add --no-cache git
 
 RUN git clone https://github.com/tutumcloud/ngrok.git /ngrok
 
@@ -19,4 +17,4 @@ EXPOSE 4443
 EXPOSE 80
 EXPOSE 443
 
-CMD /bin/bash
+CMD /bin/sh
