@@ -8,4 +8,4 @@ server:
     - /data/ngrok:/myfiles
   environment:
     - DOMAIN="tunnel.hteen.cn"
-  command: /bin/bash /server.sh
+  command: /bin/sh /server.sh
