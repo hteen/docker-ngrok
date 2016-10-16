@@ -1,19 +1,19 @@
-# docker-ngrok
+# DOCKER NGROK IMAGE
 
-## 1.Building the binaries and CA
-
-mount your folder `/data/ngrok` to container `/myfiles`
+## BUILD IMAGE
 
 ```linux
-docker run --rm -it -e DOMAIN="tunnel.hteen.cn" \
--v /data/ngrok:/myfiles hteen/ngrok /bin/bash /build.sh
+git clone https://github.com/hteen/docker-ngrok.git
+cd docker-ngrok
+docker build -t hteen/ngrok .
 ```
 
-Server and client binaries and CA will be available in `/data/ngrok` on your host.
+## RUN
+* you must mount your folder (E.g `/data/ngrok`) to container `/myfiles`
+* if it is the first run, it will generate the binaries file and CA in your floder `/data/ngrok`
 
-## 2.Running the server
 ```linux
 docker run -idt --name ngrok-server \
 -v /data/ngrok:/myfiles \
--e DOMAIN='tunnel.hteen.cn' hteen/ngrok /bin/bash /server.sh
+-e DOMAIN='tunnel.hteen.cn' hteen/ngrok /bin/sh /server.sh
 ```
